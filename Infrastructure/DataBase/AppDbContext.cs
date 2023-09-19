@@ -11,8 +11,8 @@ namespace Infrastructure.DataBase
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        DbSet<User> Users => Set<User>();
-        DbSet<CoffeShop> CoffeShops => Set<CoffeShop>();
-        DbSet<Coupon> CoffeCoupon => Set<Coupon>();
+        public DbSet<User> Users => Set<User>();
+        public DbSet<CoffeShop> CoffeShops => Set<CoffeShop>();
+        public DbSet<Coupon> CoffeCoupon => Set<Coupon>();
     }
 }

@@ -1,4 +1,7 @@
-﻿using Infrastructure.DataBase;
+﻿using Application.Shared;
+using Domain.Repositories;
+using Infrastructure.DataBase;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,15 +13,19 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    public static class DependencyInjection
+    public static class ConfigServices
     {
         public static IServiceCollection AddInfrastructure(
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("Default");
-            var constring = "Server=.; Database=CouponManagementSystem; Trusted_Connection=Yes; Encrypt=Optional";
-            services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(constring));
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("Default"));
+            });
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
             return services;
         }

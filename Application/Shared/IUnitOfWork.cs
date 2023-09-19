@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Shared
 {
-    internal interface IUnitOfWork 
+    public interface IUnitOfWork 
     {
         Task CommitAsync();
     }
