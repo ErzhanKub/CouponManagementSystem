@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CoffeShops\" />
-    <Folder Include="Coupons\" />
+    <Folder Include="CoffeShops\Commands\" />
+    <Folder Include="CoffeShops\Queries\" />
+    <Folder Include="Coupons\Commands\" />
+    <Folder Include="Coupons\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

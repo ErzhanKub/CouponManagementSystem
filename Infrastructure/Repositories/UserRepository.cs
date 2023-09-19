@@ -28,5 +28,10 @@ namespace Infrastructure.Repositories
         {
             return _dbContext.Users.AsNoTracking().ToListAsync();
         }
+
+        public async Task<User> GetByUsernameAsync(string username)
+        {
+            return await _dbContext.Users.FirstOrDefaultAsync(x => x.Username == username);
+        }
     }
 }
