@@ -17,7 +17,8 @@ namespace Infrastructure
             IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("Default");
-            services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(connectionString));
+            var constring = "Server=.; Database=CouponManagementSystem; Trusted_Connection=Yes; Encrypt=Optional";
+            services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(constring));
 
             return services;
         }
