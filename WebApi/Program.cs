@@ -1,5 +1,6 @@
 using Infrastructure;
 using Application;
+using WebApi.Middlewere;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandlingMiddlwere>();
 
 app.UseHttpsRedirection();
 

@@ -9,25 +9,22 @@ namespace WebApi.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly ILogger<UserController> _logger;
         private readonly IMediator _mediator;
 
-        public UserController(IMediator mediator)
+        public UserController(ILogger<UserController> logger,
+            IMediator mediator)
         {
+            _logger = logger;
             _mediator = mediator;
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateUserCommand request)
         {
-            try
-            {
-                var guard = await _mediator.Send(request);
-                return Ok(guard);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var guard = await _mediator.Send(request);
+
+            return Ok(guard);
         }
     }
 }
