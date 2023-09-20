@@ -24,6 +24,11 @@ namespace Infrastructure.Repositories
             await _dbContext.Users.AddAsync(entity);
         }
 
+        public void Delete(string username)
+        {
+            _dbContext.Remove(username);
+        }
+
         public Task<List<User>> GetAllAsync()
         {
             return _dbContext.Users.AsNoTracking().ToListAsync();
@@ -31,7 +36,13 @@ namespace Infrastructure.Repositories
 
         public async Task<User> GetByUsernameAsync(string username)
         {
-            return await _dbContext.Users.FirstOrDefaultAsync(x => x.Username == username);
+            var result = await _dbContext.Users.FirstOrDefaultAsync(x => x.Username == username);
+            return result;
+        }
+
+        public void Update(User entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

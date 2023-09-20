@@ -40,10 +40,10 @@ namespace WebApi.Controllers
             return Ok(users);
         }
         [HttpDelete("DeleteUser")]
-        public async Task<IActionResult> DeleteUser(string username)
+        public async Task<IActionResult> DeleteUser(DeleteUserCommand query)
         {
-            var result = await _mediator.Send(username);
-            return Ok(result);
+            await _mediator.Send(query);
+            return Ok();
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Infrastructure
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<ICouponRepository, CouponRepository>();
 
             return services;
         }
